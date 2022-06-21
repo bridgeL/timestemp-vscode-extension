@@ -12,6 +12,10 @@
 	"activationEvents": [
 		"onStartupFinished"
 	],
+	"repository": {
+        "type": "git",
+        "url": "https://github.com/bridgeL/timestemp-vscode-extension.git"
+    },
 	"main": "./extension.js",
 	"contributes": {
 		"configuration": {
