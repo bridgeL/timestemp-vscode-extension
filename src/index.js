@@ -21,11 +21,14 @@ function get_hover_word(document, position) {
     return hover_word
 }
 
-function convert(text) {
+function convert(text, range) {
     // 分析text是否是时间戳
     let n = text.search(/\D/i)
-    if (n == -1)
-        return new Date(parseInt(text) * 1000).toLocaleString()
+    if (n == -1) {
+        let s = parseInt(text);
+        if (s >= range.min && s < range.max)
+            return new Date(s * 1000).toLocaleString()
+    }
 }
 
 function init() {
@@ -42,9 +45,10 @@ function init() {
             let languages = config.get("activationOnLanguage")
             if (languages.indexOf("*") == -1 && languages.indexOf(languageId) == -1) return
 
+            let range = config.get('range')
             let hover_word = get_hover_word(document, position)
-            let time_s = convert(hover_word)
-            if (time_s) return new vscode.Hover(`#### 时间戳转换\n${time_s}`)
+            let time_s = convert(hover_word, range)
+            if (time_s) return new vscode.Hover(`时间戳转换\n${time_s}`)
         }
     })
 }

@@ -41,6 +41,18 @@
 					"default": [],
 					"description": "Set the languages where the extension will be disabled.  e.g. [\"plaintext\",\"json\",\"jsonc\"].",
 					"scope": "resource"
+				},
+				"timestamp.range.min": {
+					"type": "number",
+					"default": 1000000000,
+					"description": "Set the min limit of the timestamp.",
+					"scope": "resource"
+				},
+				"timestamp.range.max": {
+					"type": "number",
+					"default": 10000000000,
+					"description": "Set the max limit of the timestamp.",
+					"scope": "resource"
 				}
 			}
 		}
